@@ -1,0 +1,23 @@
+{
+  "env": "PROD",
+  "locale": "pt",
+  "map": {
+    "provider": "leaflet",
+    "defaultCenter": [
+      41.1579,
+      -8.6291
+    ],
+    "defaultZoom": 14
+  },
+  "features": {
+    "showDashboard": true,
+    "enablePedestrianRoutes": true,
+    "enableRealtime": true,
+    "enableHeatmap": true,
+    "enableGreenZones": true
+  },
+  "data": {
+    "sensors": "https://api.porto-climate.pt/sensors",
+    "greenzones": "https://api.porto-climate.pt/greenzones"
+  }
+}

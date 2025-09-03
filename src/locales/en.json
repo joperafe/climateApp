@@ -1,0 +1,13 @@
+{
+  "dashboard": "Dashboard",
+  "cockpit": "Cockpit",
+  "map": {
+    "title": "Porto Climate Map",
+    "heatmap": "Heat Map",
+    "greenZones": "Green Zones"
+  },
+  "actions": {
+    "simulateCarFree": "Simulate Car-Free Street",
+    "toggleSmartLights": "Toggle Smart Lights"
+  }
+}

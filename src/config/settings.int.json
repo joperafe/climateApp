@@ -1,0 +1,23 @@
+{
+  "env": "INT",
+  "locale": "en",
+  "map": {
+    "provider": "leaflet",
+    "defaultCenter": [
+      41.1579,
+      -8.6291
+    ],
+    "defaultZoom": 13
+  },
+  "features": {
+    "showDashboard": true,
+    "enablePedestrianRoutes": true,
+    "enableRealtime": false,
+    "enableHeatmap": true,
+    "enableGreenZones": true
+  },
+  "data": {
+    "sensors": "/data/sensors.mock.json",
+    "greenzones": "/data/greenzones.mock.json"
+  }
+}

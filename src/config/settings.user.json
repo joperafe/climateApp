@@ -1,0 +1,6 @@
+{
+  "features": {
+    "enableHeatmap": true,
+    "enableGreenZones": true
+  }
+}
