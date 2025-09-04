@@ -6,7 +6,7 @@ const repoName = 'climateApp'
 
 export default defineConfig({
   plugins: [react()],
-  base: `/${repoName}/`,   // 👈 crucial for GitHub Pages
+  base: `/${repoName}`,   // 👈 crucial for GitHub Pages
   server: {
     port: 5173
   }
