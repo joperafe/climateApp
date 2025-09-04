@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sensor-aliados",
+    "name": "Avenida dos Aliados",
+    "coordinates": [
+      41.1476,
+      -8.6094
+    ],
+    "data": {
+      "temperature": 27.2,
+      "humidity": 52,
+      "airQualityIndex": 45,
+      "noiseLevel": 60
+    },
+    "lastUpdated": "2025-09-01T10:00:00Z"
+  },
+  {
+    "id": "sensor-casa-musica",
+    "name": "Casa da M\u00fasica",
+    "coordinates": [
+      41.158,
+      -8.6291
+    ],
+    "data": {
+      "temperature": 25.1,
+      "humidity": 58,
+      "airQualityIndex": 38,
+      "noiseLevel": 55
+    },
+    "lastUpdated": "2025-09-01T10:05:00Z"
+  },
+  {
+    "id": "sensor-foz",
+    "name": "Foz do Douro",
+    "coordinates": [
+      41.15,
+      -8.676
+    ],
+    "data": {
+      "temperature": 23.9,
+      "humidity": 65,
+      "airQualityIndex": 30,
+      "noiseLevel": 50
+    },
+    "lastUpdated": "2025-09-01T10:10:00Z"
+  }
+]
