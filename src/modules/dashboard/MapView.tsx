@@ -47,8 +47,25 @@ export default function MapView() {
   });
 
   useEffect(() => {
-    fetchSensors().then(setSensors).catch(console.error);
-    fetchGreenZones().then(setGreenZones).catch(console.error);
+    fetchSensors()
+      .then(data => {
+        // Ensure data is an array
+        setSensors(Array.isArray(data) ? data : []);
+      })
+      .catch(error => {
+        console.error('Failed to fetch sensors:', error);
+        setSensors([]); // Set to empty array on error
+      });
+      
+    fetchGreenZones()
+      .then(data => {
+        // Ensure data is an array
+        setGreenZones(Array.isArray(data) ? data : []);
+      })
+      .catch(error => {
+        console.error('Failed to fetch green zones:', error);
+        setGreenZones([]); // Set to empty array on error
+      });
   }, []);
 
   const handleLayerToggle = (layerName: string, visible: boolean) => {
@@ -58,13 +75,15 @@ export default function MapView() {
     }));
   };
 
-  const heatPoints = sensors
-    .filter((s) => typeof s.data.temperature === "number")
-    .map((s) => ({
-      lat: s.coordinates[0],
-      lng: s.coordinates[1],
-      intensity: (s.data.temperature ?? 0) / 40, // normalize temperature (0–40 °C)
-    }));
+  const heatPoints = Array.isArray(sensors)
+    ? sensors
+        .filter((s) => typeof s.data.temperature === "number")
+        .map((s) => ({
+          lat: s.coordinates[0],
+          lng: s.coordinates[1],
+          intensity: (s.data.temperature ?? 0) / 40, // normalize temperature (0–40 °C)
+        }))
+    : [];
 
   return (
     <MapContainer center={settings.map.defaultCenter as any} zoom={settings.map.defaultZoom} className="h-full w-full">
@@ -90,7 +109,7 @@ export default function MapView() {
         ))}
 
       {/* Sensor Markers */}
-      {layerVisibility.sensors && sensors.map((s) => (
+      {layerVisibility.sensors && Array.isArray(sensors) && sensors.map((s) => (
         <Marker key={s.id} position={s.coordinates as any}>
           <Popup>
             <div className="text-sm">

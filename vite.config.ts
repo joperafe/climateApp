@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [react(), tailwind()],
   base: `/${repoName}`,   // 👈 crucial for GitHub Pages
   server: {
+    host: '0.0.0.0',
     port: 5173
   }
 })
