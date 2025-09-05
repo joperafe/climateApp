@@ -9,6 +9,7 @@ import { fetchGreenZones } from "../../services/greenZonesService";
 import L from "leaflet";
 import "leaflet.heat";
 import HeatmapLayer from "./HeatmapLayer";
+import MapControls from "./MapControls";
 
 // Cuxstom Heatmap Layer with Leaflet.heat
 // function HeatmapLayer({ points }: { points: { lat: number; lng: number; intensity: number }[] }) {
@@ -36,13 +37,26 @@ import HeatmapLayer from "./HeatmapLayer";
 // }
 
 export default function MapView() {
+  const [bol, setBol] = useState(false);
   const [sensors, setSensors] = useState<Sensor[]>([]);
   const [greenZones, setGreenZones] = useState<GreenZone[]>([]);
+  const [layerVisibility, setLayerVisibility] = useState({
+    heatmap: true,
+    greenzones: true,
+    sensors: true,
+  });
 
   useEffect(() => {
     fetchSensors().then(setSensors).catch(console.error);
     fetchGreenZones().then(setGreenZones).catch(console.error);
   }, []);
+
+  const handleLayerToggle = (layerName: string, visible: boolean) => {
+    setLayerVisibility(prev => ({
+      ...prev,
+      [layerName]: visible,
+    }));
+  };
 
   const heatPoints = sensors
     .filter((s) => typeof s.data.temperature === "number")
@@ -59,7 +73,10 @@ export default function MapView() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {settings.features.enableHeatmap && heatPoints.length > 0 && (
+      {/* Map Controls */}
+      <MapControls onLayerToggle={handleLayerToggle} layerVisibility={layerVisibility} />
+
+      {settings.features.enableHeatmap && layerVisibility.heatmap && heatPoints.length > 0 && (
         <HeatmapLayer points={heatPoints} radius={30} blur={20} maxZoom={18} />
       )}
 
@@ -67,13 +84,13 @@ export default function MapView() {
       {/* {settings.features.enableHeatmap && heatPoints.length > 0 && <HeatmapLayer points={heatPoints} />} */}
 
       {/* Green Zones */}
-      {settings.features.enableGreenZones &&
+      {settings.features.enableGreenZones && layerVisibility.greenzones &&
         greenZones.map((gz) => (
           <Polygon key={gz.id} positions={gz.polygon as any} pathOptions={{ color: "green", fillOpacity: 0.3 }} />
         ))}
 
       {/* Sensor Markers */}
-      {sensors.map((s) => (
+      {layerVisibility.sensors && sensors.map((s) => (
         <Marker key={s.id} position={s.coordinates as any}>
           <Popup>
             <div className="text-sm">

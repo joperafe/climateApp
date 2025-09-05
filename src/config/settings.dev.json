@@ -16,8 +16,43 @@
     "enableHeatmap": true,
     "enableGreenZones": true
   },
+  "mapControls": {
+    "enableZoomControls": true,
+    "position": "topright",
+    "controls": [
+      {
+        "type": "layerToggle",
+        "enabled": true,
+        "config": {}
+      },
+      {
+        "type": "draw",
+        "enabled": false,
+        "config": {
+          "icon": "✏️",
+          "title": "Drawing Tools"
+        }
+      },
+      {
+        "type": "measurement",
+        "enabled": false,
+        "config": {
+          "icon": "📏",
+          "title": "Measurement Tools"
+        }
+      },
+      {
+        "type": "fullscreen",
+        "enabled": true,
+        "config": {
+          "icon": "⛶",
+          "title": "Fullscreen"
+        }
+      }
+    ]
+  },
   "data": {
-    "sensors": "/data/sensors.mock.json",
-    "greenzones": "/data/greenzones.mock.json"
+    "sensors": "/climateApp/data/sensors.mock.json",
+    "greenzones": "/climateApp/data/greenzones.mock.json"
   }
 }

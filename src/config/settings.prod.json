@@ -16,6 +16,41 @@
     "enableHeatmap": true,
     "enableGreenZones": true
   },
+  "mapControls": {
+    "enableZoomControls": true,
+    "position": "topright",
+    "controls": [
+      {
+        "type": "layerToggle",
+        "enabled": true,
+        "config": {}
+      },
+      {
+        "type": "draw",
+        "enabled": true,
+        "config": {
+          "icon": "✏️",
+          "title": "Drawing Tools"
+        }
+      },
+      {
+        "type": "measurement",
+        "enabled": true,
+        "config": {
+          "icon": "📏",
+          "title": "Measurement Tools"
+        }
+      },
+      {
+        "type": "fullscreen",
+        "enabled": true,
+        "config": {
+          "icon": "⛶",
+          "title": "Fullscreen"
+        }
+      }
+    ]
+  },
   "data": {
     "sensors": "https://api.porto-climate.pt/sensors",
     "greenzones": "https://api.porto-climate.pt/greenzones"
